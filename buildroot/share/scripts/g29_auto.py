@@ -53,9 +53,7 @@ def find_axis(line, axis):
     number = ""
     for char in line:
         if found:
-            if char == ".":
-                number += char
-            elif char == "-":
+            if char in [".", "-"]:
                 number += char
             else:
                 try:
@@ -116,7 +114,7 @@ def z_parse(gcode, start_at_line=0, end_at_line=0):
         line_between_z.append(i - last_i - 1)
         # last_z = z
         last_i = i
-        if 0 < end_at_line <= i or temp_line >= min_g1:
+        if 0 < end_at_line <= last_i or temp_line >= min_g1:
             # print('break at line {} at heigth {}'.format(i, z))
             break
 
